@@ -2,6 +2,11 @@ const body = document.body; // Get the body element
 const themetoggle = document.querySelector('.theme-toggle');
 const prompt = document.querySelector('.prompt-btn');
 const promptInput = document.querySelector('.prompt-input');
+const promptForm = document.querySelector('.prompt-form');
+const selectModel = document.querySelector('#select-model');
+const selectCount = document.querySelector('#select-count');
+const selectRatio = document.querySelector('#select-ratio');
+const galleryGrid = document.querySelector('.gallery-grid');
 
 const examplePrompts = [
     "A magic forest with glowing plants and fairy homes among giant mushrooms",
@@ -21,6 +26,18 @@ const examplePrompts = [
     "A giant turtle carrying a village on its back in the ocean",
   ];
 
+  (() => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      body.classList.add('dark-theme');
+      themetoggle.querySelector('i').className = 'fas fa-sun';
+    } else {
+      body.classList.remove('dark-theme');
+      themetoggle.querySelector('i').className = 'fas fa-moon';
+    }
+  }
+
+  )();
 
 themetoggle.addEventListener('click', () => {
   const isDarkTheme =  body.classList.toggle('dark-theme');
@@ -34,4 +51,24 @@ const promptText = examplePrompts[promptIndex];
 promptInput.value = promptText; // Set the value of the input field to the random prompt
 promptInput.focus(); 
  
+})
+
+const CreateImageCard = (model, count, ratio, promptText) => {
+  for (let i = 0; i < count; i++) {
+    
+  }
+}
+
+promptForm.addEventListener('submit', (e) => {
+  e.preventDefault(); // Prevent the form from submitting
+
+  const model = selectModel.value;
+  const count = parseInt(selectCount.value) || 1;
+  const ratio = selectRatio.value || 1;
+  const promptText = promptInput.value.trim(); // Get the value of the input field
+
+  CreateImageCard(model, count, ratio, promptText);
+  
+
+
 })
