@@ -213,8 +213,11 @@ body.dark-theme .container {
 }
 
 
-.gallery-grid {
-    margin-top: 30px ;
+.gallery-grid:has(.img-card) {
+    margin-top: 30px;
+}
+
+.gallery-grid {    
     display: grid;
     gap: 15px;
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
